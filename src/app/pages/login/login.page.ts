@@ -28,6 +28,7 @@ export class LoginPage implements OnInit {
   ngOnInit() {  }
 
   segmentChanged(event: any){
+    console.log(event);
     if(event.detail.value === 'login'){
       this.slides.slidePrev();
       this.wavesPosition += this.wavesDifferent;
@@ -51,10 +52,8 @@ export class LoginPage implements OnInit {
 
   async register(){ 
     await this.presentLoading();
-    
     try{
     await this.authService.register(this.userRegister);
-    
     }catch(error){
       let message;
       switch(error.code){
